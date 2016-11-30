@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<p><a href="/Home/CustomVariable">Link 1 - static url</a></p>
+<p>
+    @Html.ActionLink("Link 1", "CustomVariable")
+</p>
+<p>
+    @Html.ActionLink("Link 2 - controller param", "CustomVariable", "Home")
+</p>
+<p>
+    @Html.ActionLink("Link 2 - controller param", "CustomVariable", "Demo")
+</p>
+<p>
+    @Html.ActionLink("Link 3 - undefined", "Undefined", "Undefined")
+</p>
+<p>
+    @Html.ActionLink("Link 4 - null", null)
+</p>
