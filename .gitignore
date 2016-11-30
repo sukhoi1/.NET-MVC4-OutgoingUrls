@@ -2,3 +2,5 @@
 packages/
 OutgoingUrls/bin/
 OutgoingUrls/obj/
+OutgoingUrls.Test/bin/
+OutgoingUrls.Test/obj/
