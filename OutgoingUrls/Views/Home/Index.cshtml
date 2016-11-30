@@ -1,20 +1,49 @@
-﻿@{
+﻿@using System.Configuration
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-<p><a href="/Home/CustomVariable">Link 1 - static url</a></p>
+<h4>Example of links <b>with static url</b> and <b>generated with html helper</b>.</h4>
+<p>Default {controller} value is <b>@(ConfigurationManager.AppSettings["DefaultControllerIsDemo"] == "true" ? "Demo" : "Home")</b>.</p>
 <p>
-    @Html.ActionLink("Link 1", "CustomVariable")
+    1. Static href="/Home/CustomVariable": <a href="/Home/CustomVariable">Link 1 - static url</a>;
 </p>
 <p>
+    2. Html.ActionLink("Link - html helper", "CustomVariable") no controller => <br/>
+    <ul>
+        <li>href="/Home/CustomVariable" (default controller = "Demo") and</li>
+        <li>href="/App/DoCustomVariable" (default controller = "Home");</li>
+    </ul>
+
+    @Html.ActionLink("Link - html helper", "CustomVariable")
+</p>
+
+
+<br /><hr />
+<h4>The following two links depend on <b>route default value</b> even though there are both {controller} and {action} values are mentioned.</h4>
+<p>Default {controller} value is <b>@(ConfigurationManager.AppSettings["DefaultControllerIsDemo"] == "true" ? "Demo" : "Home")</b>. So when default {controller} value is 'Demo':</p>
+<p>
+    1. Html.ActionLink("Link 2 - controller param", "CustomVariable", "Home") => /App/Do{action}:
+    <br />
     @Html.ActionLink("Link 2 - controller param", "CustomVariable", "Home")
 </p>
 <p>
+    2. Html.ActionLink("Link 2 - controller param", "CustomVariable", "Demo") => /{controller}/{action}, where {action} is CustomVariable:
+    <br />
     @Html.ActionLink("Link 2 - controller param", "CustomVariable", "Demo")
 </p>
+
+
+<br /><hr />
+<h4>This example shows how links are generated when <b>param does not have a corresponding controller/action</b> and <b>null is passed as param</b>.</h4>
 <p>
-    @Html.ActionLink("Link 3 - undefined", "Undefined", "Undefined")
+    1. Html.ActionLink("Link 3 - undefined controller/action", "Undefined", "Undefined"):
+    <br />
+    @Html.ActionLink("Link 3 - undefined controller/action", "Undefined", "Undefined")
 </p>
 <p>
+    2. Html.ActionLink("Link 4 - null", null):
+    <br />
     @Html.ActionLink("Link 4 - null", null)
 </p>

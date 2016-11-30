@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Configuration;
+using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace OutgoingUrls
@@ -9,11 +10,22 @@ namespace OutgoingUrls
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                name: "NewRoute",
-                url: "App/Do{action}",
-                defaults: new { controller = "Home" }
-            );
+            if (bool.Parse(ConfigurationManager.AppSettings["DefaultControllerIsDemo"]) == false)
+            {
+                routes.MapRoute(
+                    name: "NewRoute",
+                    url: "App/Do{action}",
+                    defaults: new { controller = "Home" }
+                    );
+            }
+            else
+            {
+                routes.MapRoute(
+                    name: "NewRoute",
+                    url: "App/Do{action}",
+                    defaults: new { controller = "Demo" }
+                    );
+            }
 
             routes.MapRoute(
                 name: "Default",
