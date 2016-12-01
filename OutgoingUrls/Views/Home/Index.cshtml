@@ -6,8 +6,7 @@
 
 <br/>
 routes.MapRoute("NewRoute", "App/{action}", new { controller = "Home" });<br />
-routes.MapRoute("Default", "{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+routes.MapRoute("Default", "{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = UrlParameter.Optional });
 <br /><br />
 
 <h4>Example of links <b>with static url</b> and <b>generated with html helper</b>.</h4>
@@ -22,7 +21,11 @@ routes.MapRoute("Default", "{controller}/{action}/{id}", new { controller = "Hom
         <li>href="/App/DoCustomVariable" (default controller = "Home");</li>
     </ul>
 
-    @Html.ActionLink("Link - html helper", "CustomVariable")
+    @Html.ActionLink("Link", "CustomVariable")<br /><br />
+    @Html.RouteLink("RouteLink - Default", "Default", new { action = "CustomVariable", controller = "Home" })<br />
+    @Html.RouteLink("RouteLink - NewRoute", "NewRoute", new { action = "CustomVariable" })<br />
+    @Html.RouteLink("RouteLink - Default (no URL template name)", new { action = "CustomVariable", controller = "Home" })<br />
+    @Html.RouteLink("RouteLink - NewRoute (no URL template name)", new { action = "CustomVariable" })
 </p>
 
 
