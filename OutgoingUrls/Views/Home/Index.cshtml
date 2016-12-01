@@ -4,13 +4,19 @@
     ViewBag.Title = "Home Page";
 }
 
+<br/>
+routes.MapRoute("NewRoute", "App/{action}", new { controller = "Home" });<br />
+routes.MapRoute("Default", "{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
+<br /><br />
+
 <h4>Example of links <b>with static url</b> and <b>generated with html helper</b>.</h4>
 <p>Default {controller} value is <b>@(ConfigurationManager.AppSettings["DefaultControllerIsDemo"] == "true" ? "Demo" : "Home")</b>.</p>
 <p>
     1. Static href="/Home/CustomVariable": <a href="/Home/CustomVariable">Link 1 - static url</a>;
 </p>
 <p>
-    2. Html.ActionLink("Link - html helper", "CustomVariable") no controller => <br/>
+    2. Html.ActionLink("Link - html helper", "CustomVariable") no controller <br/>
     <ul>
         <li>href="/Home/CustomVariable" (default controller = "Demo") and</li>
         <li>href="/App/DoCustomVariable" (default controller = "Home");</li>
@@ -24,7 +30,7 @@
 <h4>The following two links depend on <b>route default value</b> even though there are both {controller} and {action} values are mentioned.</h4>
 <p>Default {controller} value is <b>@(ConfigurationManager.AppSettings["DefaultControllerIsDemo"] == "true" ? "Demo" : "Home")</b>. So when default {controller} value is 'Demo':</p>
 <p>
-    1. Html.ActionLink("Link 2 - controller param", "CustomVariable", "Home") => /App/Do{action}:
+    2. Html.ActionLink("Link 2 - controller param", "CustomVariable", "Home") => /App/Do{action}:
     <br />
     @Html.ActionLink("Link 2 - controller param", "CustomVariable", "Home")
 </p>
@@ -38,12 +44,38 @@
 <br /><hr />
 <h4>This example shows how links are generated when <b>param does not have a corresponding controller/action</b> and <b>null is passed as param</b>.</h4>
 <p>
-    1. Html.ActionLink("Link 3 - undefined controller/action", "Undefined", "Undefined"):
+    3. Html.ActionLink("Link 3 - undefined controller/action", "Undefined", "Undefined"):
     <br />
     @Html.ActionLink("Link 3 - undefined controller/action", "Undefined", "Undefined")
 </p>
 <p>
-    2. Html.ActionLink("Link 4 - null", null):
+    3. Html.ActionLink("Link 3 - null", null):
     <br />
-    @Html.ActionLink("Link 4 - null", null)
+    @Html.ActionLink("Link 3 - null", null)
+</p>
+
+
+<br /><hr />
+<p>Default {controller} value is <b>@(ConfigurationManager.AppSettings["DefaultControllerIsDemo"] == "true" ? "Demo" : "Home")</b>.</p>
+<p>
+    4. Html.ActionLink("Link 4 - param", "CustomVariable", new { id = "Hello" }): /Home/CustomVariable/Hello when "controller" value is <b>"Demo"</b>.
+    <br />
+    4. Html.ActionLink("Link 4 - param", "CustomVariable", new { id = "Hello" }): /Home/CustomVariable?id="Hello" when "controller" value is <b>"Home"</b>.
+    <br />
+    @Html.ActionLink("Link 4 - param", "CustomVariable", new { id = "Hello" })
+    <br /><br />
+    5. Html.ActionLink("Link 5 - several params", "CustomVariable", new { id = "Hello", value = "text" }): /App/CustomVariable?id=Hello&value=text value is <b>"Home"</b>.
+    <br />
+    5. Html.ActionLink("Link 5 - several params", "CustomVariable", new { id = "Hello", value = "text" }): /Home/CustomVariable/Hello?value=text value is <b>"Demo"</b>.
+    <br />
+    @Html.ActionLink("Link 5 - several params", "CustomVariable", new { id = "Hello", value = "text" })
+</p>
+
+
+<br /><hr />
+<p>Default {controller} value is <b>@(ConfigurationManager.AppSettings["DefaultControllerIsDemo"] == "true" ? "Demo" : "Home")</b>.</p>
+<p>
+    6. Html.ActionLink("Link - param", "CustomVariable", null /* !!! */, new { @@id = "uniqueLink", @@class="class" }):
+    <br />
+    @Html.ActionLink("Link - param", "CustomVariable", null /* !!! */, new { @id = "uniqueLink", @class="class" }) 
 </p>
