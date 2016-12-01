@@ -15,7 +15,8 @@ namespace OutgoingUrls
                 routes.MapRoute(
                     name: "NewRoute",
                     url: "App/Do{action}",
-                    defaults: new { controller = "Home" }
+                    defaults: new { controller = "Home" },
+                    namespaces: new[] { "OutgoingUrls.Controllers" }
                     );
             }
             else
@@ -23,14 +24,16 @@ namespace OutgoingUrls
                 routes.MapRoute(
                     name: "NewRoute",
                     url: "App/Do{action}",
-                    defaults: new { controller = "Demo" }
+                    defaults: new { controller = "Demo" },
+                    namespaces: new[] { "OutgoingUrls.Controllers" }
                     );
             }
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "OutgoingUrls.Controllers" }
             );
         }
     }

@@ -82,3 +82,11 @@ routes.MapRoute("Default", "{controller}/{action}/{id}", new { controller = "Hom
     <br />
     @Html.ActionLink("Link - param", "CustomVariable", null /* !!! */, new { @id = "uniqueLink", @class="class" }) 
 </p>
+
+<br /><hr />
+<p>
+    7. Area link example
+    <br />
+    @Html.ActionLink("Area Link - AdminArea", "Index", new { Area = "AdminArea", Controller = "Home" })<br />
+    @Html.ActionLink("Area Link - Default (top-level controllers)", "Index", new { Area = string.Empty, Controller = "Home" })
+</p>
