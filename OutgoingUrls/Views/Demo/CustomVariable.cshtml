@@ -1,7 +1,9 @@
-﻿
+﻿@using OutgoingUrls.Helper
+
 @{
     ViewBag.Title = "CustomVariable";
 }
 
 <h2>CustomVariable 2</h2>
 
+@Html.AlphaHelper("~/Views/Demo/Alpha.cshtml", new { Alpha = "Alpha", Delta = "Delta" })

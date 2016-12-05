@@ -1,8 +1,11 @@
 ﻿@using System.Configuration
+@using OutgoingUrls.Helper
 
 @{
     ViewBag.Title = "Home Page";
 }
+
+@Html.AlphaHelper("~/Views/Demo/Alpha.cshtml", new { Alpha = "Alpha", Delta = "Delta" })
 
 <br/>
 routes.MapRoute("NewRoute", "App/{action}", new { controller = "Home" });<br />
