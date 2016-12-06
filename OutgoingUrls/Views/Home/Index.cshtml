@@ -5,7 +5,12 @@
     ViewBag.Title = "Home Page";
 }
 
-@Html.AlphaHelper("~/Views/Demo/Alpha.cshtml", new { Alpha = "Alpha", Delta = "Delta" })
+<b>Helper Method:</b><br/>
+@Html.AlphaHelper("~/Views/Demo/Alpha.cshtml", new { Alpha = "Alpha", Delta = "Delta" })<br />
+<b>Partial View:</b><br />
+@Html.Partial("~/Views/Demo/Alpha.cshtml", new { Alpha = "Alpha", Delta = "Delta" })<br />
+<b>Action Method:</b><br />
+@Html.Action("Alpha", "Demo", new { Alpha = "Alpha", Delta = "Delta" })<br />
 
 <br/>
 routes.MapRoute("NewRoute", "App/{action}", new { controller = "Home" });<br />

@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using System.Web.Mvc.Routing.Constraints;
 
 namespace OutgoingUrls.Controllers
 {
@@ -10,9 +9,9 @@ namespace OutgoingUrls.Controllers
             return View();
         }
 
-        public ActionResult Alpha()
+        public ActionResult Alpha(dynamic model)
         {
-            return View();
+            return View(model);
         }
     }
 }
